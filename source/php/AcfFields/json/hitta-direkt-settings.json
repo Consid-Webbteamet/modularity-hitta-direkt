@@ -1,0 +1,135 @@
+[
+  {
+    "key": "group_modularity_hitta_direkt_settings",
+    "title": "Hitta direkt",
+    "fields": [
+      {
+        "key": "field_hitta_direkt_editor_info",
+        "label": "Instruktion",
+        "name": "",
+        "type": "message",
+        "message": "Lägg till 1 till 5 genvägar. Länktexten visas som etikett under cirkeln.",
+        "new_lines": "wpautop",
+        "esc_html": 0
+      },
+      {
+        "key": "field_hitta_direkt_columns",
+        "label": "Kolumner",
+        "name": "columns",
+        "type": "select",
+        "required": 1,
+        "choices": {
+          "1": "1 kolumn",
+          "2": "2 kolumner",
+          "3": "3 kolumner",
+          "4": "4 kolumner",
+          "5": "5 kolumner"
+        },
+        "default_value": "5",
+        "return_format": "value",
+        "allow_null": 0,
+        "multiple": 0,
+        "ui": 1,
+        "ajax": 0,
+        "placeholder": "",
+        "wrapper": {
+          "width": "33",
+          "class": "",
+          "id": ""
+        }
+      },
+      {
+        "key": "field_hitta_direkt_items",
+        "label": "Länkar",
+        "name": "items",
+        "type": "repeater",
+        "required": 1,
+        "instructions": "Varje rad blir en klickbar cirkel.",
+        "layout": "row",
+        "button_label": "Lägg till länk",
+        "min": 1,
+        "max": 5,
+        "collapsed": "field_hitta_direkt_item_link",
+        "sub_fields": [
+          {
+            "key": "field_hitta_direkt_item_icon",
+            "label": "Ikon",
+            "name": "icon",
+            "type": "icon",
+            "required": 1,
+            "default_value": "",
+            "wrapper": {
+              "width": "25",
+              "class": "",
+              "id": ""
+            }
+          },
+          {
+            "key": "field_hitta_direkt_item_color",
+            "label": "Färg",
+            "name": "color",
+            "type": "select",
+            "required": 1,
+            "choices": {
+              "orange": "Orange",
+              "red": "Röd",
+              "green": "Grön",
+              "purple": "Lila",
+              "blue": "Blå"
+            },
+            "default_value": "blue",
+            "return_format": "value",
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "placeholder": "",
+            "wrapper": {
+              "width": "25",
+              "class": "",
+              "id": ""
+            }
+          },
+          {
+            "key": "field_hitta_direkt_item_link",
+            "label": "Länk till sida",
+            "name": "link",
+            "type": "link",
+            "required": 1,
+            "return_format": "array",
+            "wrapper": {
+              "width": "50",
+              "class": "",
+              "id": ""
+            }
+          }
+        ]
+      }
+    ],
+    "location": [
+      [
+        {
+          "param": "post_type",
+          "operator": "==",
+          "value": "mod-hitta-direkt"
+        }
+      ],
+      [
+        {
+          "param": "block",
+          "operator": "==",
+          "value": "acf/hitta-direkt"
+        }
+      ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0
+  }
+]
