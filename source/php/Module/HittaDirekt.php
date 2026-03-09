@@ -22,11 +22,8 @@ class HittaDirekt extends \Modularity\Module
     {
         $fields = $this->getFields();
         $items = $this->normalizeItems((array) ($fields['items'] ?? []));
-        $requestedColumns = $this->normalizeColumns($fields['columns'] ?? 5);
-        $columns = min($requestedColumns, max(1, count($items)));
 
         return [
-            'columns' => $columns,
             'items' => $items,
         ];
     }
@@ -70,23 +67,6 @@ class HittaDirekt extends \Modularity\Module
     }
 
     /**
-     * @param mixed $columns
-     */
-    private function normalizeColumns($columns): int
-    {
-        $value = (int) $columns;
-        if ($value < 1) {
-            return 1;
-        }
-
-        if ($value > 5) {
-            return 5;
-        }
-
-        return $value;
-    }
-
-    /**
      * @param mixed $link
      * @return array{url:string,title:string,target:string}
      */
@@ -102,7 +82,7 @@ class HittaDirekt extends \Modularity\Module
 
         return [
             'url' => (string) ($link['url'] ?? ''),
-            'title' => (string) ($link['title'] ?? ''),
+            'title' => wp_specialchars_decode((string) ($link['title'] ?? ''), ENT_QUOTES),
             'target' => (string) ($link['target'] ?? ''),
         ];
     }

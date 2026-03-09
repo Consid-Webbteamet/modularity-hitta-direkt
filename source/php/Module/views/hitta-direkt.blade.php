@@ -1,5 +1,5 @@
 @if (!empty($items))
-    <div class="shortcuts" style="--shortcuts-columns: {{ (int) $columns }};">
+    <div class="shortcuts">
         @foreach ($items as $item)
             @php($target = $item['link']['target'] ?? '')
             @php($rel = $target === '_blank' ? 'noopener noreferrer' : '')
@@ -13,7 +13,7 @@
                     rel="{{ $rel }}"
                 @endif
             >
-                <span class="shortcuts__circle" style="--shortcuts-color: {{ $item['colorValue'] }};">
+                <span class="shortcuts__circle shortcuts__circle--{{ $item['colorKey'] }}">
                     <span
                         class="c-icon material-symbols shortcuts__icon"
                         data-material-symbol="{{ $item['icon'] }}"

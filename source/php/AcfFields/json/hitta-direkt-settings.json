@@ -13,32 +13,6 @@
         "esc_html": 0
       },
       {
-        "key": "field_hitta_direkt_columns",
-        "label": "Kolumner",
-        "name": "columns",
-        "type": "select",
-        "required": 1,
-        "choices": {
-          "1": "1 kolumn",
-          "2": "2 kolumner",
-          "3": "3 kolumner",
-          "4": "4 kolumner",
-          "5": "5 kolumner"
-        },
-        "default_value": "5",
-        "return_format": "value",
-        "allow_null": 0,
-        "multiple": 0,
-        "ui": 1,
-        "ajax": 0,
-        "placeholder": "",
-        "wrapper": {
-          "width": "33",
-          "class": "",
-          "id": ""
-        }
-      },
-      {
         "key": "field_hitta_direkt_items",
         "label": "Länkar",
         "name": "items",
