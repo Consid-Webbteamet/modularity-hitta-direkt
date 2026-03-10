@@ -6,31 +6,34 @@ namespace ModularityHittaDirekt\Module;
 
 class HittaDirekt extends \Modularity\Module
 {
-    public $slug = 'hitta-direkt';
+    public $slug = "hitta-direkt";
     public $supports = [];
     public $isBlockCompatible = true;
     public $expectsTitleField = false;
 
     public function init(): void
     {
-        $this->nameSingular = __('Hitta direkt', 'modularity-hitta-direkt');
-        $this->namePlural = __('Hitta direkt', 'modularity-hitta-direkt');
-        $this->description = __('Visar klickbara ikonlänkar i en rad.', 'modularity-hitta-direkt');
+        $this->nameSingular = __("Hitta direkt", "modularity-hitta-direkt");
+        $this->namePlural = __("Hitta direkt", "modularity-hitta-direkt");
+        $this->description = __(
+            "Visar klickbara ikonlänkar i en rad.",
+            "modularity-hitta-direkt",
+        );
     }
 
     public function data(): array
     {
         $fields = $this->getFields();
-        $items = $this->normalizeItems((array) ($fields['items'] ?? []));
+        $items = $this->normalizeItems((array) ($fields["items"] ?? []));
 
         return [
-            'items' => $items,
+            "items" => $items,
         ];
     }
 
     public function template(): string
     {
-        return 'hitta-direkt.blade.php';
+        return "hitta-direkt.blade.php";
     }
 
     /**
@@ -46,20 +49,20 @@ class HittaDirekt extends \Modularity\Module
                 continue;
             }
 
-            $link = $this->normalizeLink($item['link'] ?? []);
-            $icon = trim((string) ($item['icon'] ?? ''));
+            $link = $this->normalizeLink($item["link"] ?? []);
+            $icon = trim((string) ($item["icon"] ?? ""));
 
-            if ($link['url'] === '' || $icon === '') {
+            if ($link["url"] === "" || $icon === "") {
                 continue;
             }
 
-            $colorKey = (string) ($item['color'] ?? 'blue');
+            $colorKey = (string) ($item["color"] ?? "blue");
             $normalized[] = [
-                'icon' => $icon,
-                'colorKey' => $colorKey,
-                'colorValue' => $this->getColorValue($colorKey),
-                'label' => $link['title'],
-                'link' => $link,
+                "icon" => $icon,
+                "colorKey" => $colorKey,
+                "colorValue" => $this->getColorValue($colorKey),
+                "label" => $link["title"],
+                "link" => $link,
             ];
         }
 
@@ -74,29 +77,32 @@ class HittaDirekt extends \Modularity\Module
     {
         if (!is_array($link)) {
             return [
-                'url' => '',
-                'title' => '',
-                'target' => '',
+                "url" => "",
+                "title" => "",
+                "target" => "",
             ];
         }
 
         return [
-            'url' => (string) ($link['url'] ?? ''),
-            'title' => wp_specialchars_decode((string) ($link['title'] ?? ''), ENT_QUOTES),
-            'target' => (string) ($link['target'] ?? ''),
+            "url" => (string) ($link["url"] ?? ""),
+            "title" => wp_specialchars_decode(
+                (string) ($link["title"] ?? ""),
+                ENT_QUOTES,
+            ),
+            "target" => (string) ($link["target"] ?? ""),
         ];
     }
 
     private function getColorValue(string $colorKey): string
     {
         $colorMap = [
-            'blue' => 'var(--color-primary-500)',
-            'red' => 'var(--color-secondary-500)',
-            'green' => 'var(--color-quaternary-500)',
-            'orange' => '#A86700',
-            'purple' => '#6F2A67',
+            "blue" => "var(--color-primary-500)",
+            "red" => "var(--color-secondary-500)",
+            "green" => "var(--color-quaternary-500)",
+            "orange" => "#A86700",
+            "purple" => "#6F2A67",
         ];
 
-        return $colorMap[$colorKey] ?? $colorMap['blue'];
+        return $colorMap[$colorKey] ?? $colorMap["blue"];
     }
 }
