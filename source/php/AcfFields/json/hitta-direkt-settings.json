@@ -8,7 +8,7 @@
         "label": "Instruktion",
         "name": "",
         "type": "message",
-        "message": "Lägg till 1 till 5 genvägar. Länktexten visas som etikett under cirkeln.",
+        "message": "Lägg till 1 till 5 genvägar. Länktexten visas som rubrik under cirkeln. Du kan visa antingen ikon eller upp till två bokstäver i cirkeln. Om bokstäver anges visas inte ikonen. Du kan även lägga till en valfri punktlista under rubriken.",
         "new_lines": "wpautop",
         "esc_html": 0
       },
@@ -18,7 +18,7 @@
         "name": "items",
         "type": "repeater",
         "required": 1,
-        "instructions": "Varje rad blir en klickbar cirkel.",
+        "instructions": "Varje rad blir en klickbar genväg. Ange ikon eller upp till två bokstäver.",
         "layout": "row",
         "button_label": "Lägg till länk",
         "min": 1,
@@ -26,11 +26,26 @@
         "collapsed": "field_hitta_direkt_item_link",
         "sub_fields": [
           {
+            "key": "field_hitta_direkt_item_initials",
+            "label": "Bokstäver",
+            "name": "initials",
+            "type": "text",
+            "instructions": "Valfritt. Ange upp till två bokstäver. Om detta fält används visas bokstäver i cirkeln och ikonen döljs.",
+            "required": 0,
+            "maxlength": 2,
+            "wrapper": {
+              "width": "25",
+              "class": "",
+              "id": ""
+            }
+          },
+          {
             "key": "field_hitta_direkt_item_icon",
             "label": "Ikon",
             "name": "icon",
             "type": "icon",
-            "required": 1,
+            "instructions": "Valfritt. Visas bara om fältet Bokstäver är tomt.",
+            "required": 0,
             "default_value": "",
             "wrapper": {
               "width": "25",
@@ -59,7 +74,7 @@
             "ajax": 0,
             "placeholder": "",
             "wrapper": {
-              "width": "25",
+              "width": "20",
               "class": "",
               "id": ""
             }
@@ -72,7 +87,38 @@
             "required": 1,
             "return_format": "array",
             "wrapper": {
-              "width": "50",
+              "width": "30",
+              "class": "",
+              "id": ""
+            }
+          },
+          {
+            "key": "field_hitta_direkt_item_bullets",
+            "label": "Punktlista",
+            "name": "bullets",
+            "type": "repeater",
+            "required": 0,
+            "instructions": "Valfritt. Visas under rubriken.",
+            "layout": "table",
+            "button_label": "Lägg till punkt",
+            "min": 0,
+            "max": 6,
+            "sub_fields": [
+              {
+                "key": "field_hitta_direkt_item_bullet_text",
+                "label": "Text",
+                "name": "text",
+                "type": "text",
+                "required": 1,
+                "wrapper": {
+                  "width": "",
+                  "class": "",
+                  "id": ""
+                }
+              }
+            ],
+            "wrapper": {
+              "width": "100",
               "class": "",
               "id": ""
             }
